@@ -36,20 +36,20 @@
 
 <script>
     document.getElementById('miFormulario').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita el envío del formulario
+    event.preventDefault(); // Evita el envío predeterminado
 
-        // Muestra el mensaje
-        const mensaje = document.getElementById('mensaje');
-        mensaje.style.display = 'block';
+    // Muestra el mensaje
+    const mensaje = document.getElementById('mensaje');
+    mensaje.style.display = 'block';
 
-        // Limpia los campos del formulario
-        this.reset();
+    // Limpia los campos del formulario
+    this.reset();
 
-        // Oculta el mensaje después de 5 segundos
-        setTimeout(() => {
-            mensaje.style.display = 'none';
-        }, 5000);
-    });
+    // Envía el formulario manualmente después de un breve retraso
+    setTimeout(() => {
+        this.submit(); // Envía el formulario después de mostrar el mensaje
+    }, 5000);
+});
 </script>
       </div>
   </body>
