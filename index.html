@@ -8,7 +8,14 @@
     <p>Párrafo de contenido</p>
     <div class="container">
         <h1>FormSubmit Demo</h1>
-        <form target="_blank" action="https://formsubmit.co/cisneros.juandaniel10@gmail.com" method="POST">
+      <style>
+        #mensaje {
+            display: none;
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+        <form action="https://formsubmit.co/cisneros.juandaniel10@gmail.com" method="POST" id="miFormulario">
           <div class="form-group">
             <div class="form-row">
               <div class="col">
@@ -23,7 +30,27 @@
             <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
           </div>
           <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
+          <input type="hidden" name="_captcha" value="false">
         </form>
+      <div id="mensaje">Gracias por llenar este formulario</div>
+
+<script>
+    document.getElementById('miFormulario').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el envío del formulario
+
+        // Muestra el mensaje
+        const mensaje = document.getElementById('mensaje');
+        mensaje.style.display = 'block';
+
+        // Limpia los campos del formulario
+        this.reset();
+
+        // Oculta el mensaje después de 5 segundos
+        setTimeout(() => {
+            mensaje.style.display = 'none';
+        }, 5000);
+    });
+</script>
       </div>
   </body>
 </html>
