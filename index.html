@@ -1,56 +1,49 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Título de la página</title>
-  </head>
-  <body>
-    <h1>Encabezado principal</h1>
-    <p>Párrafo de contenido</p>
-    <div class="container">
-        <h1>FormSubmit Demo</h1>
-      <style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
         #mensaje {
             display: none;
             margin-top: 10px;
             color: green;
         }
     </style>
-        <form action="https://formsubmit.co/cisneros.juandaniel10@gmail.com" method="POST" id="miFormulario">
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col">
-                <input type="text" name="name" class="form-control" placeholder="Full Name" required>
-              </div>
-              <div class="col">
-                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
-          <input type="hidden" name="_captcha" value="false">
-        </form>
-      <div id="mensaje">Gracias por llenar este formulario</div>
+</head>
+<body>
+
+<form action="https://formsubmit.co/cisneros.juandaniel10@gmail.com" id="miFormulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    
+    <button type="submit">Enviar</button>
+</form>
+
+<div id="mensaje">Gracias por llenar este formulario</div>
 
 <script>
     document.getElementById('miFormulario').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita el envío predeterminado
+        event.preventDefault(); // Evita el envío del formulario
 
-    // Muestra el mensaje
-    const mensaje = document.getElementById('mensaje');
-    mensaje.style.display = 'block';
+        // Muestra el mensaje
+        const mensaje = document.getElementById('mensaje');
+        mensaje.style.display = 'block';
 
-    // Limpia los campos del formulario
-    this.reset();
+        // Limpia los campos del formulario
+        this.reset();
 
-    // Envía el formulario manualmente después de un breve retraso
-    setTimeout(() => {
-        this.submit(); // Envía el formulario después de mostrar el mensaje
-    }, 5000);
-});
+        // Oculta el mensaje después de 5 segundos y recarga la página
+        setTimeout(() => {
+            mensaje.style.display = 'none';
+            location.reload(); // Recarga la página
+        }, 5000);
+    });
 </script>
-      </div>
-  </body>
+
+</body>
 </html>
